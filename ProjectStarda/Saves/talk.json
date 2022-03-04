@@ -1,0 +1,17 @@
+{
+  "emojis": [" :)", " :P", " "],
+  "intents": [
+    {"tag": "greetings",
+      "user": ["hello", "hi", "hey", "yo", "greetings"],
+      "bot": ["Hello, how are you?", "Hey, how are you?", "Hi, how are you?"]
+    },
+    {"tag": "greetings2",
+      "user": ["how are you", "how are u", "how r u", "how ru"],
+      "bot": ["I am fine and you?", "I'm fine and you?", "I'm good and you?"]
+    },
+    {"tag": "greetings3",
+      "user": ["i am fine and you", "i'm fine and you", "im fine and you", "im good and you", "i am good and you", "i'm good and you"],
+      "bot": ["I am fine thank you", "im fine thank you", "i'm fine and you", "i am good thank you", "im good and you", "i'm good and you"]
+    }
+  ]
+}

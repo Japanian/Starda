@@ -1,0 +1,14 @@
+{
+    "count": 0,
+    "dataAnalysis": {
+        "bot": [],
+        "prc": {
+            "Rock": 0.0,
+            "Paper": 0.0,
+            "Scissors": 0.0
+        },
+        "user": [],
+        "winner": []
+    },
+    "games": {}
+}
