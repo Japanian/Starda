@@ -1,0 +1,127 @@
+Index: ProjectStarda/functions.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import time\nimport random\nfrom tools import *\nfrom ressources import *\nimport os\nimport json\n\ndef main():\n    print(\"Hi! I'm Starda, the chatbot made by Japanian\")\n    while True:\n        user = input(\"> \").lower()\n\n        # Conversation -----------------------------\n        with open(\"Saves/talk.json\", \"r\") as f:\n            data = json.load(f)\n\n        if any(word in user for word in data[\"intents\"][0][\"user\"]):\n            answer = random.choice(data[\"intents\"][0][\"bot\"])\n            print(answer + random.choice(data[\"emojis\"]))\n\n        elif any(word in user for word in data[\"intents\"][1][\"user\"]):\n            answer = random.choice(data[\"intents\"][1][\"bot\"])\n            print(answer + random.choice(data[\"emojis\"]))\n\n        elif any(word in user for word in data[\"intents\"][2][\"user\"]):\n            answer = random.choice(data[\"intents\"][2][\"bot\"])\n            print(answer + random.choice(data[\"emojis\"]))\n\n        # Others -----------------------------------\n\n        elif \"quiz\" in user or \"q&a\" in user:\n            quiz()\n\n        elif any(word in user for word in rpsUser):\n            rps()\n\n        elif any(word in user for word in resetUser):\n            resetLobby()\n\n        elif \"finish\" in user or \"quit\" in user or \"exit\" in user:\n            print(\"Okay bye, thank you for trying me :)\")\n            break\n\n        elif user == \"math\":\n            math()\n\n        else:\n            print(\"\\nSorry I didn't understood :'(\"\n                  \"\\nCan you repeat?\")\n\n\n# quiz\n\ndef quiz():\n    print(\"\\nOkay, let's go for the quiz!\")\n    print(\"First, let me explain, I will ask questions and you will awnser, your awnsers\"\n          \"will be saved for data analysis purposes\")\n\n    print(\"\\nWarning : Your information may be collected, they will be used to improve this chatbot\")\n\n    time.sleep(2)\n\n    while True:\n        print(\"\\nQuestion 1:\"\n              \"\\nChoose a number between 1 and 10\")\n        q1 = int(input(\"> \"))\n        if q1 == 0 or q1 > 10:\n            print(\"Hey, i said a number between 1 and 10\")\n            continue\n        else:\n            break\n\n    quizDataSave(q1)\n\n\n# Rock paper scissors\n\ndef rps():\n    global winned\n    awnser = random.choice(rpsAwnser)\n    print(awnser)\n    print(\"\\nWarning : Your information may be collected, they will be used to improve this chatbot\")\n    time.sleep(2)\n\n    botWin = 0\n    userWin = 0\n    actions = [\"Rock\", \"Paper\", \"Scissors\"]\n    botChoices = [\"Rock\", \"Paper\", \"Scissors\"]\n\n    if rpsDataActions() == \"Rock\":\n        botChoices.append(\"Paper\")\n    elif rpsDataActions() == \"Paper\":\n        botChoices.append(\"Scissors\")\n    elif rpsDataActions() == \"Scissors\":\n        botChoices.append(\"Rock\")\n\n    while True:\n        print(\"\\nChoose your action :\"\n              \"\\nA - Rock\"\n              \"\\nB - Paper\"\n              \"\\nC - Scissors\")\n        action = input(\"> \").lower()\n        if action.startswith(\"a\"):\n            userAction = actions[0]\n        elif action.startswith(\"b\"):\n            userAction = actions[1]\n        elif action.startswith(\"c\"):\n            userAction = actions[2]\n        else:\n            print(\"huh? Can you repeat?\")\n            continue\n\n        botAction = random.choice(botChoices)\n\n        print(\"3\")\n        time.sleep(1)\n        print(\"2\")\n        time.sleep(1)\n        print(\"1\")\n        time.sleep(1)\n\n        print(f\"\\nI choose {botAction}!\")\n\n        if userAction == \"Rock\" and botAction == \"Scissors\" or userAction == \"Paper\" and botAction == \"Rock\" or userAction == \"Scissors\" and botAction == \"Paper\":\n            print(\"\\nYou won, GG! :)\")\n            winned = \"user\"\n            userWin += 1\n            print(f\"You now have {userWin} win(s)\")\n\n        elif botAction == \"Rock\" and userAction == \"Scissors\" or botAction == \"Paper\" and userAction == \"Rock\" or botAction == \"Scissors\" and userAction == \"Paper\":\n            print(\"\\nYay! I won :)\")\n            winned = \"bot\"\n            botWin += 1\n            print(f\"I now have {botWin} win(s)\")\n\n        elif botAction == userAction:\n            winned = \"null\"\n            print(\"Oops, no one won :'(\")\n\n        else:\n            print(\"Something goes wrong\")\n\n        time.sleep(1.5)\n\n        rpsDataSave(userAction, botAction, winned)\n\n        print(\"\\nDo you want to replay?\")\n        choice = input(\"> \").lower()\n        if choice.startswith(\"y\"):\n            pass\n        else:\n            break\n\n\n# Utilities\n\ndef resetLobby():\n    while True:\n        print(\"\\nWhat do you want to reset?\"\n              \"\\nA - Quiz\"\n              \"\\nB - Rock Paper Scissors\")\n        menu = input(\"> \").lower()\n        if menu == \"a\":\n            reset(\"quiz\")\n            print(\"Reset completed\")\n            time.sleep(1)\n            os.system(\"clear\")\n            break\n        elif menu == \"b\":\n            reset(\"rps\")\n            print(\"Reset completed\")\n            time.sleep(1)\n            os.system(\"clear\")\n            break\n        else:\n            print(\"a or b only\")\n\ndef math():\n    while True:\n        print(\"\\nChoose a number form\"\n              \"\\nA - Int (1)\"\n              \"\\nB - Float (1.0)\")\n        form = input(\"> \").lower()\n        if form.startswith(\"a\"):\n            print(\"\\nEnter the first term\")\n            first = int(input(\"> \"))\n            print(\"\\nEnter the second term\")\n            second = int(input(\"> \"))\n\n\n            print(\"\\nChoose a symbol :\"\n                  \"\\nA - +\"\n                  \"\\nB - -\"\n                  \"\\nC - /\"\n                  \"\\nD - *\")\n            menu = input(\"> \").lower()\n\n            if menu.startswith(\"a\"):\n                result = first + second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"b\"):\n                result = first - second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"c\"):\n                result = first / second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"d\"):\n                result = first * second\n                print(f\"The result is {result}\")\n\n        elif form.startswith(\"b\"):\n            print(\"\\nEnter the first term\")\n            first = float(input(\"> \"))\n            print(\"\\nEnter the second term\")\n            second = float(input(\"> \"))\n\n            print(\"\\nChoose a symbol :\"\n                  \"\\nA - +\"\n                  \"\\nB - -\"\n                  \"\\nC - /\"\n                  \"\\nD - *\")\n            menu = input(\"> \").lower()\n\n            if menu.startswith(\"a\"):\n                result = first + second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"b\"):\n                result = first - second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"c\"):\n                result = first / second\n                print(f\"The result is {result}\")\n            elif menu.startswith(\"d\"):\n                result = first * second\n                print(f\"The result is {result}\")\n\n        print(\"\\nDo you want to restart?\")\n        re = input(\"> \")\n        if re.startswith(\"y\"):\n            continue\n        else:\n            break\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectStarda/functions.py b/ProjectStarda/functions.py
+--- a/ProjectStarda/functions.py	
++++ b/ProjectStarda/functions.py	
+@@ -12,7 +12,7 @@
+ 
+         # Conversation -----------------------------
+         with open("Saves/talk.json", "r") as f:
+-            data = json.load(f)
++           data = json.load(f)
+ 
+         if any(word in user for word in data["intents"][0]["user"]):
+             answer = random.choice(data["intents"][0]["bot"])
+@@ -151,6 +151,9 @@
+         else:
+             break
+ 
++def uno():
++    print("Okay let's play UNO")
++
+ 
+ # Utilities
+ 
+Index: ProjectStarda/.idea/ProjectStarda.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/venv\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectStarda/.idea/ProjectStarda.iml b/ProjectStarda/.idea/ProjectStarda.iml
+--- a/ProjectStarda/.idea/ProjectStarda.iml	
++++ b/ProjectStarda/.idea/ProjectStarda.iml	
+@@ -4,7 +4,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/venv" />
+     </content>
+-    <orderEntry type="inheritedJdk" />
++    <orderEntry type="jdk" jdkName="Python 3.9" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: ProjectStarda/Saves/rps.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n    \"count\": 0,\n    \"dataAnalysis\": {\n        \"bot\": [],\n        \"prc\": {\n            \"Rock\": 0.0,\n            \"Paper\": 0.0,\n            \"Scissors\": 0.0\n        },\n        \"user\": [],\n        \"winner\": []\n    },\n    \"games\": {}\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectStarda/Saves/rps.json b/ProjectStarda/Saves/rps.json
+--- a/ProjectStarda/Saves/rps.json	
++++ b/ProjectStarda/Saves/rps.json	
+@@ -1,14 +1,42 @@
+ {
+-    "count": 0,
++    "count": 3,
+     "dataAnalysis": {
+-        "bot": [],
++        "bot": [
++            "Rock",
++            "Scissors",
++            "Rock"
++        ],
+         "prc": {
+-            "Rock": 0.0,
++            "Rock": 66.66666666666667,
+             "Paper": 0.0,
+-            "Scissors": 0.0
++            "Scissors": 33.333333333333336
+         },
+-        "user": [],
+-        "winner": []
++        "user": [
++            "Scissors",
++            "Rock",
++            "Rock"
++        ],
++        "winner": [
++            "bot",
++            "user",
++            "null"
++        ]
+     },
+-    "games": {}
++    "games": {
++        "game 1": {
++            "user": "Scissors",
++            "bot": "Rock",
++            "win": "bot"
++        },
++        "game 2": {
++            "user": "Rock",
++            "bot": "Scissors",
++            "win": "user"
++        },
++        "game 3": {
++            "user": "Rock",
++            "bot": "Rock",
++            "win": "null"
++        }
++    }
+ }
+\ No newline at end of file
+Index: ProjectStarda/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.9 (ProjectStarda)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ProjectStarda/.idea/misc.xml b/ProjectStarda/.idea/misc.xml
+--- a/ProjectStarda/.idea/misc.xml	
++++ b/ProjectStarda/.idea/misc.xml	
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (ProjectStarda)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
