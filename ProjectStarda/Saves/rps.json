@@ -1,14 +1,42 @@
 {
-    "count": 0,
+    "count": 3,
     "dataAnalysis": {
-        "bot": [],
+        "bot": [
+            "Rock",
+            "Scissors",
+            "Rock"
+        ],
         "prc": {
-            "Rock": 0.0,
+            "Rock": 66.66666666666667,
             "Paper": 0.0,
-            "Scissors": 0.0
+            "Scissors": 33.333333333333336
         },
-        "user": [],
-        "winner": []
+        "user": [
+            "Scissors",
+            "Rock",
+            "Rock"
+        ],
+        "winner": [
+            "bot",
+            "user",
+            "null"
+        ]
     },
-    "games": {}
+    "games": {
+        "game 1": {
+            "user": "Scissors",
+            "bot": "Rock",
+            "win": "bot"
+        },
+        "game 2": {
+            "user": "Rock",
+            "bot": "Scissors",
+            "win": "user"
+        },
+        "game 3": {
+            "user": "Rock",
+            "bot": "Rock",
+            "win": "null"
+        }
+    }
 }

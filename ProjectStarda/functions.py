@@ -1,4 +1,5 @@
 import time
+from Crypto.cfunctions import beginning
 import random
 from tools import *
 from ressources import *
@@ -12,7 +13,7 @@ def main():
 
         # Conversation -----------------------------
         with open("Saves/talk.json", "r") as f:
-            data = json.load(f)
+           data = json.load(f)
 
         if any(word in user for word in data["intents"][0]["user"]):
             answer = random.choice(data["intents"][0]["bot"])
@@ -43,6 +44,9 @@ def main():
 
         elif user == "math":
             math()
+
+        elif user == "cg":
+            beginning()
 
         else:
             print("\nSorry I didn't understood :'("
@@ -150,6 +154,9 @@ def rps():
             pass
         else:
             break
+
+def uno():
+    print("Okay let's play UNO")
 
 
 # Utilities
