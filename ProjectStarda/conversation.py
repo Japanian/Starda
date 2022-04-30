@@ -1,4 +1,6 @@
 import re
+from functions import rps
+from ressources import *
 
 def probCheck(userMessage, recongnizedWords, singleResponse=False, requiredWords=[]):
     messagePts = 0
@@ -30,8 +32,15 @@ def verify(message):
     # Responses List
     # response("awnser", [what the user have to say], )
 
+
+
     response("Hello!", ["hello", "hey", "hi"], singleResponse=True)
-    response("I am a bot created by Japanian", ["who", "are", "you", "u"], requiredWords=["who"])
+    response(who, ["who", "are", "you", "u"], requiredWords=["who"])
+    response(rpsa, ["rock", "paper", "scissors", "play"], requiredWords=["rock", "paper", "scissors"])
+    response(rpsa, ["rps", "play"], requiredWords=["rps"])
+
+
+
 
     bestMatch = max(probList, key=probList.get)
     print(probList)
@@ -45,4 +54,10 @@ def botResponse(input):
 def main():
     print("Hi! I'm Starda, the chatbot made by Japanian")
     while True:
-        print(botResponse(input("> ")))
+        bot = botResponse(input("> "))
+        if bot == "Okay let\'s play rock paper scissors :)":
+            print(bot)
+            rps()
+
+        else :
+            print(bot)

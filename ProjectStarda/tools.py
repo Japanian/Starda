@@ -144,3 +144,4 @@ def reset(target):
     else:
         "Error: Target have to be either quiz or rps"
 
+

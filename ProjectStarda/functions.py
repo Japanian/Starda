@@ -32,8 +32,6 @@ def quiz():
 
 def rps():
     global winned
-    awnser = random.choice(rpsAwnser)
-    print(awnser)
     print("\nWarning : Your information may be collected, they will be used to improve this chatbot")
     time.sleep(2)
 

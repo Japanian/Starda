@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="039d7483-19e1-42a7-b4ce-27c433c38de8" name="Changes" comment="Crypto Game">
-      <change afterPath="$PROJECT_DIR$/ProjectStarda/conversation.py" afterDir="false" />
+    <list default="true" id="039d7483-19e1-42a7-b4ce-27c433c38de8" name="Changes" comment="New conversation module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectStarda/Crypto/cfunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/Crypto/cfunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectStarda/Crypto/ctools.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/Crypto/ctools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectStarda/Saves/rps.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/Saves/rps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectStarda/conversation.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/conversation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectStarda/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectStarda/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectStarda/ressources.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/ressources.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectStarda/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectStarda/tools.py" afterDir="false" />
     </list>
@@ -124,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651111984982</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="New conversation module">
+      <created>1651321758994</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651321758994</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +148,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Test" />
     <MESSAGE value="Crypto Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crypto Game" />
+    <MESSAGE value="New conversation module" />
+    <option name="LAST_COMMIT_MESSAGE" value="New conversation module" />
   </component>
 </project>
