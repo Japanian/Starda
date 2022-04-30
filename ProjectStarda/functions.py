@@ -1,57 +1,8 @@
 import time
-from Crypto.cfunctions import beginning
 import random
 from tools import *
 from ressources import *
 import os
-import json
-
-def main():
-    print("Hi! I'm Starda, the chatbot made by Japanian")
-    while True:
-        user = input("> ").lower()
-
-        # Conversation -----------------------------
-        with open("Saves/talk.json", "r") as f:
-           data = json.load(f)
-
-        if any(word in user for word in data["intents"][0]["user"]):
-            answer = random.choice(data["intents"][0]["bot"])
-            print(answer + random.choice(data["emojis"]))
-
-        elif any(word in user for word in data["intents"][1]["user"]):
-            answer = random.choice(data["intents"][1]["bot"])
-            print(answer + random.choice(data["emojis"]))
-
-        elif any(word in user for word in data["intents"][2]["user"]):
-            answer = random.choice(data["intents"][2]["bot"])
-            print(answer + random.choice(data["emojis"]))
-
-        # Others -----------------------------------
-
-        elif "quiz" in user or "q&a" in user:
-            quiz()
-
-        elif any(word in user for word in rpsUser):
-            rps()
-
-        elif any(word in user for word in resetUser):
-            resetLobby()
-
-        elif "finish" in user or "quit" in user or "exit" in user:
-            print("Okay bye, thank you for trying me :)")
-            break
-
-        elif user == "math":
-            math()
-
-        elif user == "cg":
-            beginning()
-
-        else:
-            print("\nSorry I didn't understood :'("
-                  "\nCan you repeat?")
-
 
 # quiz
 

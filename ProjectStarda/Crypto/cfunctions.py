@@ -1,6 +1,5 @@
-from cressources import *
-from ctools import *
-from pprint import pprint
+from ProjectStarda.Crypto.cressources import *
+from ProjectStarda.Crypto.ctools import *
 from random import choice, randint
 import os
 
@@ -45,7 +44,7 @@ def trade():
     pass
 
 def mine():
-    global finish
+    global finish, askReplay
     gain = 0.5
     chain = 0
     while not finish:
@@ -85,8 +84,8 @@ def mine():
         if finish == True:
             break
 
-        if askReplay == True:
-            if Continue() == False:
+        if askReplay:
+            if not Continue():
                 break
     finish = False
 
@@ -107,5 +106,17 @@ def settings():
             if setting == "a":
                 askReplay = False
 
-
+def Continue():
+    choice = input("\nWhat do you want to do?"
+                   "\n1. Continue"
+                   "\n2. Stop"
+                   "\n3. Wallet"
+                   "\n> ").lower()
+    if choice.startswith("c") or choice == "1":
+        return True
+    elif choice.startswith("w") or choice == "3":
+        walletShow(pl)
+        Continue()
+    else:
+        return False
 

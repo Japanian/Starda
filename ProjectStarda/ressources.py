@@ -1,4 +1,4 @@
-
+import conversation
 # SmallTalk
 
 helloUser = ["hello", "hi", "hey"]
