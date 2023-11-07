@@ -38,6 +38,7 @@ def verify(message):
     response(who, ["who", "are", "you", "u"], requiredWords=["who"])
     response(rpsa, ["rock", "paper", "scissors", "play"], requiredWords=["rock", "paper", "scissors"])
     response(rpsa, ["rps", "play"], requiredWords=["rps"])
+    response("Im good how about you?",["what's", "up", "what", "how", "are" "you"])
 
 
 
